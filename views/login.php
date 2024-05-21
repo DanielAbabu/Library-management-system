@@ -1,12 +1,3 @@
-<?php
-require 'partials/header.php';
-
-function topage($value)
-{
-    return $value;
-};
-
-?>
 <!DOCTYPE html>
 <html>
 
@@ -18,6 +9,8 @@ function topage($value)
 
 <body>
     <div class="form-box">
+
+
         <div class="button-box">
             <div id="btn" style="left: 0"></div>
             <button type="button" class="toggle-btn" id="log" onclick="location.href='login.php'" style="color: #fff">
@@ -29,7 +22,7 @@ function topage($value)
         </div>
 
         <!-- Login Form -->
-        <form id="login" class="input-group" action="index.html">
+        <form id="login" class="input-group" action="home.php">
             <div class="inp">
                 <input type="text" id="email" class="input-field" placeholder="Username or Phone Number" style="width: 88%; border: none" required="required" />
             </div>
@@ -44,6 +37,3 @@ function topage($value)
 </body>
 
 </html>
-
-
-<?php require 'partials/footer.php'; ?>

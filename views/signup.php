@@ -20,7 +20,7 @@
         </div>
 
         <!-- Registration Form -->
-        <form id="register" class="input-group">
+        <form action="home.php" id="register" class="input-group">
             <input type="text" class="input-field" placeholder="Full Name" required="required" />
             <input type="text" class="input-field" placeholder="Email Address" required="required" />
             <input type="text" class="input-field" placeholder="Create Password" name="psame" required="required" />
