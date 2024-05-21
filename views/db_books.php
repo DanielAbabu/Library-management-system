@@ -10,7 +10,7 @@ try {
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Fetch all books
+    //fetch all books
     $bookdata = $pdo->prepare("SELECT * FROM book");
     $bookdata->execute();
     $bookobj = $bookdata->fetchAll(PDO::FETCH_ASSOC);
@@ -23,15 +23,20 @@ try {
     // Get search query
     // $query = "dani";  //checking
 
-    $query = $_GET["query"];
+    $query = trim($_GET['query']);
+    $query = filter_var($query, FILTER_SANITIZE_STRING);
 
+    if ($query) {
+        // Search the database
+        $stmt = $pdo->prepare("SELECT * FROM book WHERE bookname LIKE '%$query%' OR bookauthor LIKE '%$query%' OR bookid LIKE '%$query%'");
 
-    // Search the database
-    $stmt = $pdo->prepare("SELECT * FROM book WHERE bookname LIKE '%$query%' OR bookauthor LIKE '%$query%' OR bookid LIKE '%$query%'");
+        $stmt->execute();
 
-    $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } else {
+        $result = null;
+    }
 
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // var_dump($result);
 
